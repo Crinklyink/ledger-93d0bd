@@ -1,63 +1,63 @@
 {
-  "generated_at": "2026-06-24T01:20:29.039001+00:00",
-  "as_of": "2026-06-19",
+  "generated_at": "2026-06-24T11:55:14.538135+00:00",
+  "as_of": "2026-06-26",
   "source": "real-stockpred",
-  "model_hash": "e0886a5b",
-  "universe_total": 1565,
-  "stage1_survivors": 1565,
+  "model_hash": "1cd07378",
+  "universe_total": 1574,
+  "stage1_survivors": 1574,
   "model_metrics": {
-    "deflated_sharpe": 0.9819129859883182,
-    "sharpe_p50": 2.8912804402561996,
-    "ic_mean": -0.0006603896089258462,
+    "deflated_sharpe": 0.9760044523560304,
+    "sharpe_p50": 2.79400680580898,
+    "ic_mean": 0.011416558478354493,
     "overfit_warning": true
   },
   "model_card": {
     "objective": "return",
     "n_features": 68,
-    "n_rows": 605906,
-    "n_tickers": 2226,
+    "n_rows": 606382,
+    "n_tickers": 2227,
     "cv": "walkforward",
     "fold_sharpes": [
-      4.112503455578533,
-      -1.5188200829479175,
-      0.21563282643137235,
-      -8.72521119595706,
-      7.55493083554681,
-      3.0283228415319403,
-      2.840722155093161,
-      -1.6033587681038861,
-      5.875754205868367,
-      3.0906690728059427,
-      2.6302546599650345,
-      2.9418387254192377
+      1.6079268142804621,
+      0.41790124640550635,
+      1.6824839686878053,
+      -3.838408644695988,
+      8.856396945237794,
+      5.442166227196449,
+      5.900964904633419,
+      -0.5027693582301476,
+      8.528804388150062,
+      0.26226586585721273,
+      6.034712427233392,
+      3.9055296429301545
     ],
     "fold_ics": [
-      0.05157553734693241,
-      0.03018150265582285,
-      0.0471301454080884,
-      0.05747678516457665,
-      -0.009164757052720632,
-      -0.029604601794870268,
-      -0.03575705043583732,
-      0.014153526524288237,
-      -0.03550847705244937,
-      -0.030665553359387025,
-      -0.05242149088192951,
-      -0.015320241829624581
+      0.004354516915251972,
+      0.006982269677189361,
+      0.03375204534396057,
+      -0.00816703143644314,
+      0.030829570598348094,
+      0.04558641133387768,
+      -0.02816471042768305,
+      0.011104051436029855,
+      -0.0009928109755453947,
+      0.0033179011066579514,
+      -0.028140855284023655,
+      0.06653734345263367
     ],
     "fold_hit_rates": [
-      0.5771506688701227,
-      0.5119086274540124,
-      0.5214535929008597,
-      0.392291020500806,
-      0.6351299432607003,
-      0.5860282607551637,
-      0.528093346176653,
-      0.4908996012628051,
-      0.567167731337494,
-      0.4769006112457928,
-      0.5280016680437383,
-      0.520048867175327
+      0.5354483390617776,
+      0.46437685847667415,
+      0.5900102939465022,
+      0.41046586892101633,
+      0.6429268893962984,
+      0.5408992093018765,
+      0.5625939325847285,
+      0.47623688243802975,
+      0.5959943801236602,
+      0.45869706679571054,
+      0.551701653106248,
+      0.5276046997513475
     ],
     "ensemble_weights": {
       "LightGBM ranker": 0.55,
@@ -65,491 +65,491 @@
       "Neural net": 0.15
     },
     "best_params": {
-      "num_leaves": 174,
-      "learning_rate": 0.056384306567574094,
-      "n_estimators": 2847,
-      "feature_fraction": 0.9452951591582224,
-      "bagging_fraction": 0.9451747175950737,
-      "lambda_l1": 0.4489814360903077,
-      "lambda_l2": 0.19255796644325754,
-      "min_child_samples": 11
+      "num_leaves": 58,
+      "learning_rate": 0.0999374981156625,
+      "n_estimators": 1026,
+      "feature_fraction": 0.7513051533351103,
+      "bagging_fraction": 0.6495617415262988,
+      "lambda_l1": 0.0019719905921834736,
+      "lambda_l2": 0.03226132784437507,
+      "min_child_samples": 228
     }
   },
   "selected": [
     {
-      "ticker": "OKLO",
-      "company_name": "OKLO",
-      "current_price": 61.17,
-      "target_price": 65.45,
+      "ticker": "ACN",
+      "company_name": "Accenture",
+      "current_price": 124.83,
+      "target_price": 133.57,
+      "upside_pct": 7.0,
+      "final_score": 95,
+      "score_raw": 0.9494,
+      "confidence_pct": 89.1,
+      "confidence_label": "high",
+      "probability_7pct_5d": 58.3,
+      "risk": "medium",
+      "signals": [
+        "rsi_14",
+        "dist_52wk_high",
+        "mom_5d"
+      ],
+      "explanation": "leading signals: rsi_14, dist_52wk_high, mom_5d"
+    },
+    {
+      "ticker": "EPAM",
+      "company_name": "EPAM Systems",
+      "current_price": 76.04,
+      "target_price": 81.36,
+      "upside_pct": 7.0,
+      "final_score": 95,
+      "score_raw": 0.9454,
+      "confidence_pct": 88.9,
+      "confidence_label": "high",
+      "probability_7pct_5d": 57.7,
+      "risk": "medium",
+      "signals": [
+        "rsi_14",
+        "dist_52wk_high",
+        "mom_5d"
+      ],
+      "explanation": "leading signals: rsi_14, dist_52wk_high, mom_5d"
+    },
+    {
+      "ticker": "ICHR",
+      "company_name": "ICHR",
+      "current_price": 99.61,
+      "target_price": 106.58,
+      "upside_pct": 7.0,
+      "final_score": 92,
+      "score_raw": 0.9243,
+      "confidence_pct": 87.9,
+      "confidence_label": "high",
+      "probability_7pct_5d": 61.6,
+      "risk": "high",
+      "signals": [
+        "rate_10y",
+        "bb_width",
+        "hy_spread_chg"
+      ],
+      "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"
+    },
+    {
+      "ticker": "SNDK",
+      "company_name": "SNDK",
+      "current_price": 2273.73,
+      "target_price": 2432.89,
+      "upside_pct": 7.0,
+      "final_score": 92,
+      "score_raw": 0.9203,
+      "confidence_pct": 87.7,
+      "confidence_label": "high",
+      "probability_7pct_5d": 60.7,
+      "risk": "high",
+      "signals": [
+        "rate_10y",
+        "bb_width",
+        "mom_5d"
+      ],
+      "explanation": "leading signals: rate_10y, bb_width, mom_5d"
+    },
+    {
+      "ticker": "VICR",
+      "company_name": "VICR",
+      "current_price": 365.53,
+      "target_price": 391.12,
+      "upside_pct": 7.0,
+      "final_score": 92,
+      "score_raw": 0.9191,
+      "confidence_pct": 87.6,
+      "confidence_label": "high",
+      "probability_7pct_5d": 60.6,
+      "risk": "high",
+      "signals": [
+        "rate_10y",
+        "bb_width",
+        "mom_5d"
+      ],
+      "explanation": "leading signals: rate_10y, bb_width, mom_5d"
+    },
+    {
+      "ticker": "BE",
+      "company_name": "BE",
+      "current_price": 345.85,
+      "target_price": 370.06,
+      "upside_pct": 7.0,
+      "final_score": 92,
+      "score_raw": 0.918,
+      "confidence_pct": 87.6,
+      "confidence_label": "high",
+      "probability_7pct_5d": 60.5,
+      "risk": "high",
+      "signals": [
+        "rate_10y",
+        "bb_width",
+        "mom_5d"
+      ],
+      "explanation": "leading signals: rate_10y, bb_width, mom_5d"
+    },
+    {
+      "ticker": "TTMI",
+      "company_name": "TTMI",
+      "current_price": 221.47,
+      "target_price": 236.97,
+      "upside_pct": 7.0,
+      "final_score": 92,
+      "score_raw": 0.9167,
+      "confidence_pct": 87.5,
+      "confidence_label": "high",
+      "probability_7pct_5d": 60.1,
+      "risk": "high",
+      "signals": [
+        "rate_10y",
+        "bb_width",
+        "hy_spread_chg"
+      ],
+      "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"
+    },
+    {
+      "ticker": "PEGA",
+      "company_name": "Pegasystems",
+      "current_price": 29.38,
+      "target_price": 31.44,
+      "upside_pct": 7.0,
+      "final_score": 92,
+      "score_raw": 0.9164,
+      "confidence_pct": 87.5,
+      "confidence_label": "high",
+      "probability_7pct_5d": 55.8,
+      "risk": "medium",
+      "signals": [
+        "rsi_14",
+        "dist_52wk_high",
+        "mom_5d"
+      ],
+      "explanation": "leading signals: rsi_14, dist_52wk_high, mom_5d"
+    },
+    {
+      "ticker": "FORM",
+      "company_name": "FORM",
+      "current_price": 156.66,
+      "target_price": 167.63,
+      "upside_pct": 7.0,
+      "final_score": 92,
+      "score_raw": 0.9156,
+      "confidence_pct": 87.4,
+      "confidence_label": "high",
+      "probability_7pct_5d": 60.0,
+      "risk": "medium",
+      "signals": [
+        "rate_10y",
+        "bb_width",
+        "mom_5d"
+      ],
+      "explanation": "leading signals: rate_10y, bb_width, mom_5d"
+    },
+    {
+      "ticker": "ALAB",
+      "company_name": "ALAB",
+      "current_price": 439.66,
+      "target_price": 470.44,
+      "upside_pct": 7.0,
+      "final_score": 92,
+      "score_raw": 0.9151,
+      "confidence_pct": 87.4,
+      "confidence_label": "high",
+      "probability_7pct_5d": 59.9,
+      "risk": "medium",
+      "signals": [
+        "rate_10y",
+        "bb_width",
+        "mom_5d"
+      ],
+      "explanation": "leading signals: rate_10y, bb_width, mom_5d"
+    },
+    {
+      "ticker": "WULF",
+      "company_name": "WULF",
+      "current_price": 28.31,
+      "target_price": 30.29,
       "upside_pct": 7.0,
       "final_score": 91,
-      "score_raw": 0.9079,
-      "confidence_pct": 82.9,
+      "score_raw": 0.9147,
+      "confidence_pct": 87.4,
       "confidence_label": "high",
-      "probability_7pct_5d": 57.9,
+      "probability_7pct_5d": 59.6,
       "risk": "medium",
       "signals": [
-        "vix_change_4w",
-        "mom_jt",
-        "reversal_1w"
+        "rate_10y",
+        "bb_width",
+        "hy_spread_chg"
       ],
-      "explanation": "leading signals: vix_change_4w, mom_jt, reversal_1w"
+      "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"
     },
     {
-      "ticker": "LCID",
-      "company_name": "LCID",
-      "current_price": 5.36,
-      "target_price": 5.74,
-      "upside_pct": 7.1,
+      "ticker": "MU",
+      "company_name": "MU",
+      "current_price": 1211.38,
+      "target_price": 1296.18,
+      "upside_pct": 7.0,
       "final_score": 91,
-      "score_raw": 0.9051,
-      "confidence_pct": 82.8,
+      "score_raw": 0.9142,
+      "confidence_pct": 87.4,
       "confidence_label": "high",
-      "probability_7pct_5d": 57.5,
+      "probability_7pct_5d": 59.5,
       "risk": "medium",
       "signals": [
-        "vix_change_4w",
-        "mom_jt",
-        "reversal_1w"
+        "rate_10y",
+        "bb_width",
+        "mom_5d"
       ],
-      "explanation": "leading signals: vix_change_4w, mom_jt, reversal_1w"
+      "explanation": "leading signals: rate_10y, bb_width, mom_5d"
     },
     {
-      "ticker": "FRMI",
-      "company_name": "FRMI",
-      "current_price": 9.5,
-      "target_price": 10.17,
-      "upside_pct": 7.1,
-      "final_score": 90,
-      "score_raw": 0.9033,
-      "confidence_pct": 82.7,
-      "confidence_label": "high",
-      "probability_7pct_5d": 57.2,
-      "risk": "medium",
-      "signals": [
-        "vix_change_4w",
-        "rvol_5d",
-        "vix_term_slope"
-      ],
-      "explanation": "leading signals: vix_change_4w, rvol_5d, vix_term_slope"
-    },
-    {
-      "ticker": "NTSK",
-      "company_name": "NTSK",
-      "current_price": 9.05,
-      "target_price": 9.68,
+      "ticker": "IT",
+      "company_name": "IT",
+      "current_price": 125.73,
+      "target_price": 134.53,
       "upside_pct": 7.0,
-      "final_score": 90,
-      "score_raw": 0.9021,
-      "confidence_pct": 82.6,
+      "final_score": 91,
+      "score_raw": 0.9142,
+      "confidence_pct": 87.4,
       "confidence_label": "high",
-      "probability_7pct_5d": 57.0,
+      "probability_7pct_5d": 55.8,
       "risk": "medium",
       "signals": [
-        "vix_change_4w",
-        "vix_term_slope",
-        "rvol_5d"
+        "rsi_14",
+        "dist_52wk_high",
+        "mom_5d"
       ],
-      "explanation": "leading signals: vix_change_4w, vix_term_slope, rvol_5d"
+      "explanation": "leading signals: rsi_14, dist_52wk_high, mom_5d"
     },
     {
-      "ticker": "SMMT",
-      "company_name": "SMMT",
-      "current_price": 13.75,
-      "target_price": 14.71,
+      "ticker": "INTC",
+      "company_name": "INTC",
+      "current_price": 140.94,
+      "target_price": 150.81,
       "upside_pct": 7.0,
-      "final_score": 90,
-      "score_raw": 0.9014,
-      "confidence_pct": 82.6,
+      "final_score": 91,
+      "score_raw": 0.9138,
+      "confidence_pct": 87.4,
       "confidence_label": "high",
-      "probability_7pct_5d": 56.8,
+      "probability_7pct_5d": 59.5,
       "risk": "medium",
       "signals": [
-        "vix_change_4w",
-        "mom_jt",
-        "reversal_1w"
+        "rate_10y",
+        "bb_width",
+        "hy_spread_chg"
       ],
-      "explanation": "leading signals: vix_change_4w, mom_jt, reversal_1w"
+      "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"
     },
     {
-      "ticker": "CRWV",
-      "company_name": "CRWV",
-      "current_price": 117.95,
-      "target_price": 126.21,
+      "ticker": "UCTT",
+      "company_name": "UCTT",
+      "current_price": 123.14,
+      "target_price": 131.76,
       "upside_pct": 7.0,
-      "final_score": 90,
-      "score_raw": 0.9001,
-      "confidence_pct": 82.5,
+      "final_score": 91,
+      "score_raw": 0.9133,
+      "confidence_pct": 87.3,
       "confidence_label": "high",
-      "probability_7pct_5d": 56.7,
+      "probability_7pct_5d": 59.4,
       "risk": "medium",
       "signals": [
-        "vix_change_4w",
-        "mom_jt",
-        "reversal_1w"
+        "rate_10y",
+        "bb_width",
+        "hy_spread_chg"
       ],
-      "explanation": "leading signals: vix_change_4w, mom_jt, reversal_1w"
+      "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"
     },
     {
-      "ticker": "BLLN",
-      "company_name": "BLLN",
-      "current_price": 105.15,
-      "target_price": 112.51,
+      "ticker": "TSEM",
+      "company_name": "TSEM",
+      "current_price": 316.85,
+      "target_price": 339.03,
       "upside_pct": 7.0,
-      "final_score": 90,
-      "score_raw": 0.9001,
-      "confidence_pct": 82.5,
+      "final_score": 91,
+      "score_raw": 0.9131,
+      "confidence_pct": 87.3,
       "confidence_label": "high",
-      "probability_7pct_5d": 56.7,
+      "probability_7pct_5d": 59.4,
       "risk": "medium",
       "signals": [
-        "vix_change_4w",
-        "vix_term_slope",
-        "rvol_5d"
+        "rate_10y",
+        "bb_width",
+        "mom_5d"
       ],
-      "explanation": "leading signals: vix_change_4w, vix_term_slope, rvol_5d"
+      "explanation": "leading signals: rate_10y, bb_width, mom_5d"
     },
     {
-      "ticker": "MARA",
-      "company_name": "MARA",
-      "current_price": 14.22,
-      "target_price": 15.22,
+      "ticker": "STRL",
+      "company_name": "STRL",
+      "current_price": 932.75,
+      "target_price": 998.04,
       "upside_pct": 7.0,
-      "final_score": 90,
-      "score_raw": 0.897,
-      "confidence_pct": 82.4,
+      "final_score": 91,
+      "score_raw": 0.9129,
+      "confidence_pct": 87.3,
       "confidence_label": "high",
-      "probability_7pct_5d": 56.4,
+      "probability_7pct_5d": 59.3,
       "risk": "medium",
       "signals": [
-        "vix_change_4w",
-        "mom_jt",
-        "reversal_1w"
+        "rate_10y",
+        "bb_width",
+        "hy_spread_chg"
       ],
-      "explanation": "leading signals: vix_change_4w, mom_jt, reversal_1w"
+      "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"
     },
     {
-      "ticker": "FPS",
-      "company_name": "FPS",
-      "current_price": 63.41,
-      "target_price": 67.85,
+      "ticker": "PRAX",
+      "company_name": "PRAX",
+      "current_price": 303.39,
+      "target_price": 324.63,
       "upside_pct": 7.0,
-      "final_score": 90,
-      "score_raw": 0.8959,
-      "confidence_pct": 82.3,
+      "final_score": 91,
+      "score_raw": 0.9126,
+      "confidence_pct": 87.3,
       "confidence_label": "high",
-      "probability_7pct_5d": 56.4,
+      "probability_7pct_5d": 59.3,
       "risk": "medium",
       "signals": [
-        "vix_change_4w",
-        "vix_term_slope",
-        "rvol_5d"
+        "rate_10y",
+        "bb_width",
+        "mom_5d"
       ],
-      "explanation": "leading signals: vix_change_4w, vix_term_slope, rvol_5d"
+      "explanation": "leading signals: rate_10y, bb_width, mom_5d"
     },
     {
-      "ticker": "COGT",
-      "company_name": "COGT",
-      "current_price": 34.54,
-      "target_price": 36.96,
+      "ticker": "SIMO",
+      "company_name": "SIMO",
+      "current_price": 336.9,
+      "target_price": 360.48,
       "upside_pct": 7.0,
-      "final_score": 88,
-      "score_raw": 0.885,
-      "confidence_pct": 81.7,
+      "final_score": 91,
+      "score_raw": 0.9124,
+      "confidence_pct": 87.3,
       "confidence_label": "high",
-      "probability_7pct_5d": 53.2,
+      "probability_7pct_5d": 59.3,
       "risk": "medium",
       "signals": [
-        "vix_change_4w",
-        "reversal_1w",
-        "mom_jt"
+        "rate_10y",
+        "bb_width",
+        "hy_spread_chg"
       ],
-      "explanation": "leading signals: vix_change_4w, reversal_1w, mom_jt"
+      "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"
     },
     {
-      "ticker": "HOOD",
-      "company_name": "HOOD",
-      "current_price": 108.15,
-      "target_price": 115.72,
+      "ticker": "AMKR",
+      "company_name": "AMKR",
+      "current_price": 93.55,
+      "target_price": 100.1,
       "upside_pct": 7.0,
-      "final_score": 88,
-      "score_raw": 0.8775,
-      "confidence_pct": 81.4,
+      "final_score": 91,
+      "score_raw": 0.9115,
+      "confidence_pct": 87.2,
       "confidence_label": "high",
-      "probability_7pct_5d": 55.4,
+      "probability_7pct_5d": 59.2,
       "risk": "medium",
       "signals": [
-        "vix_change_4w",
-        "mom_jt",
-        "reversal_1w"
+        "rate_10y",
+        "bb_width",
+        "hy_spread_chg"
       ],
-      "explanation": "leading signals: vix_change_4w, mom_jt, reversal_1w"
+      "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"
     },
     {
-      "ticker": "BULL",
-      "company_name": "BULL",
-      "current_price": 7.08,
-      "target_price": 7.58,
-      "upside_pct": 7.1,
-      "final_score": 88,
-      "score_raw": 0.8764,
-      "confidence_pct": 81.3,
+      "ticker": "GLW",
+      "company_name": "GLW",
+      "current_price": 209.83,
+      "target_price": 224.52,
+      "upside_pct": 7.0,
+      "final_score": 91,
+      "score_raw": 0.9113,
+      "confidence_pct": 87.2,
+      "confidence_label": "high",
+      "probability_7pct_5d": 59.1,
+      "risk": "medium",
+      "signals": [
+        "rate_10y",
+        "bb_width",
+        "hy_spread_chg"
+      ],
+      "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"
+    },
+    {
+      "ticker": "AUGO",
+      "company_name": "AUGO",
+      "current_price": 65.26,
+      "target_price": 69.83,
+      "upside_pct": 7.0,
+      "final_score": 91,
+      "score_raw": 0.9102,
+      "confidence_pct": 87.2,
+      "confidence_label": "high",
+      "probability_7pct_5d": 59.0,
+      "risk": "medium",
+      "signals": [
+        "rate_10y",
+        "bb_width",
+        "hy_spread_chg"
+      ],
+      "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"
+    },
+    {
+      "ticker": "ORKA",
+      "company_name": "ORKA",
+      "current_price": 85.38,
+      "target_price": 91.36,
+      "upside_pct": 7.0,
+      "final_score": 91,
+      "score_raw": 0.9086,
+      "confidence_pct": 87.1,
+      "confidence_label": "high",
+      "probability_7pct_5d": 58.5,
+      "risk": "medium",
+      "signals": [
+        "rate_10y",
+        "bb_width",
+        "hy_spread_chg"
+      ],
+      "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"
+    },
+    {
+      "ticker": "Z",
+      "company_name": "Z",
+      "current_price": 30.31,
+      "target_price": 32.43,
+      "upside_pct": 7.0,
+      "final_score": 91,
+      "score_raw": 0.9084,
+      "confidence_pct": 87.1,
       "confidence_label": "high",
       "probability_7pct_5d": 55.3,
       "risk": "medium",
       "signals": [
-        "vix_change_4w",
-        "mom_jt",
-        "reversal_1w"
+        "rsi_14",
+        "dist_52wk_high",
+        "mom_5d"
       ],
-      "explanation": "leading signals: vix_change_4w, mom_jt, reversal_1w"
+      "explanation": "leading signals: rsi_14, dist_52wk_high, mom_5d"
     },
     {
-      "ticker": "MWH",
-      "company_name": "MWH",
-      "current_price": 34.21,
-      "target_price": 36.6,
+      "ticker": "TER",
+      "company_name": "TER",
+      "current_price": 457.0,
+      "target_price": 488.99,
       "upside_pct": 7.0,
-      "final_score": 87,
-      "score_raw": 0.8715,
-      "confidence_pct": 81.1,
+      "final_score": 91,
+      "score_raw": 0.9077,
+      "confidence_pct": 87.1,
       "confidence_label": "high",
-      "probability_7pct_5d": 55.0,
+      "probability_7pct_5d": 58.4,
       "risk": "medium",
       "signals": [
-        "vix_change_4w",
-        "vix_term_slope",
-        "rvol_5d"
+        "rate_10y",
+        "bb_width",
+        "mom_5d"
       ],
-      "explanation": "leading signals: vix_change_4w, vix_term_slope, rvol_5d"
-    },
-    {
-      "ticker": "CGON",
-      "company_name": "CGON",
-      "current_price": 61.08,
-      "target_price": 65.36,
-      "upside_pct": 7.0,
-      "final_score": 87,
-      "score_raw": 0.8712,
-      "confidence_pct": 81.1,
-      "confidence_label": "high",
-      "probability_7pct_5d": 52.0,
-      "risk": "medium",
-      "signals": [
-        "vix_change_4w",
-        "reversal_1w",
-        "mom_jt"
-      ],
-      "explanation": "leading signals: vix_change_4w, reversal_1w, mom_jt"
-    },
-    {
-      "ticker": "BOIL",
-      "company_name": "BOIL",
-      "current_price": 28.31,
-      "target_price": 30.29,
-      "upside_pct": 7.0,
-      "final_score": 87,
-      "score_raw": 0.8683,
-      "confidence_pct": 80.9,
-      "confidence_label": "high",
-      "probability_7pct_5d": 54.9,
-      "risk": "medium",
-      "signals": [
-        "vix_change_4w",
-        "mom_jt",
-        "reversal_1w"
-      ],
-      "explanation": "leading signals: vix_change_4w, mom_jt, reversal_1w"
-    },
-    {
-      "ticker": "TMDX",
-      "company_name": "TransMedics",
-      "current_price": 78.79,
-      "target_price": 84.31,
-      "upside_pct": 7.0,
-      "final_score": 87,
-      "score_raw": 0.8654,
-      "confidence_pct": 80.8,
-      "confidence_label": "high",
-      "probability_7pct_5d": 54.8,
-      "risk": "medium",
-      "signals": [
-        "vix_change_4w",
-        "mom_jt",
-        "reversal_1w"
-      ],
-      "explanation": "leading signals: vix_change_4w, mom_jt, reversal_1w"
-    },
-    {
-      "ticker": "KLAR",
-      "company_name": "KLAR",
-      "current_price": 18.84,
-      "target_price": 20.16,
-      "upside_pct": 7.0,
-      "final_score": 86,
-      "score_raw": 0.8604,
-      "confidence_pct": 80.5,
-      "confidence_label": "high",
-      "probability_7pct_5d": 54.4,
-      "risk": "medium",
-      "signals": [
-        "vix_change_4w",
-        "vix_term_slope",
-        "rvol_5d"
-      ],
-      "explanation": "leading signals: vix_change_4w, vix_term_slope, rvol_5d"
-    },
-    {
-      "ticker": "SCO",
-      "company_name": "SCO",
-      "current_price": 31.84,
-      "target_price": 34.07,
-      "upside_pct": 7.0,
-      "final_score": 86,
-      "score_raw": 0.8572,
-      "confidence_pct": 80.4,
-      "confidence_label": "high",
-      "probability_7pct_5d": 54.2,
-      "risk": "medium",
-      "signals": [
-        "vix_change_4w",
-        "mom_jt",
-        "reversal_1w"
-      ],
-      "explanation": "leading signals: vix_change_4w, mom_jt, reversal_1w"
-    },
-    {
-      "ticker": "SRRK",
-      "company_name": "SRRK",
-      "current_price": 47.33,
-      "target_price": 50.64,
-      "upside_pct": 7.0,
-      "final_score": 85,
-      "score_raw": 0.8538,
-      "confidence_pct": 80.2,
-      "confidence_label": "high",
-      "probability_7pct_5d": 51.0,
-      "risk": "medium",
-      "signals": [
-        "vix_change_4w",
-        "reversal_1w",
-        "mom_jt"
-      ],
-      "explanation": "leading signals: vix_change_4w, reversal_1w, mom_jt"
-    },
-    {
-      "ticker": "QXO",
-      "company_name": "QXO",
-      "current_price": 17.76,
-      "target_price": 19.0,
-      "upside_pct": 7.0,
-      "final_score": 85,
-      "score_raw": 0.8521,
-      "confidence_pct": 80.1,
-      "confidence_label": "high",
-      "probability_7pct_5d": 53.9,
-      "risk": "medium",
-      "signals": [
-        "vix_change_4w",
-        "mom_jt",
-        "reversal_1w"
-      ],
-      "explanation": "leading signals: vix_change_4w, mom_jt, reversal_1w"
-    },
-    {
-      "ticker": "NVT",
-      "company_name": "NVT",
-      "current_price": 177.02,
-      "target_price": 189.41,
-      "upside_pct": 7.0,
-      "final_score": 85,
-      "score_raw": 0.848,
-      "confidence_pct": 79.9,
-      "confidence_label": "high",
-      "probability_7pct_5d": 50.6,
-      "risk": "medium",
-      "signals": [
-        "vix_change_4w",
-        "reversal_1w",
-        "yield_curve_2y10y"
-      ],
-      "explanation": "leading signals: vix_change_4w, reversal_1w, yield_curve_2y10y"
-    },
-    {
-      "ticker": "IRDM",
-      "company_name": "IRDM",
-      "current_price": 44.57,
-      "target_price": 47.69,
-      "upside_pct": 7.0,
-      "final_score": 85,
-      "score_raw": 0.8474,
-      "confidence_pct": 79.9,
-      "confidence_label": "high",
-      "probability_7pct_5d": 56.3,
-      "risk": "medium",
-      "signals": [
-        "rvol_5d",
-        "reversal_1w",
-        "eps_growth_yoy"
-      ],
-      "explanation": "leading signals: rvol_5d, reversal_1w, eps_growth_yoy"
-    },
-    {
-      "ticker": "CELH",
-      "company_name": "CELH",
-      "current_price": 30.8,
-      "target_price": 32.96,
-      "upside_pct": 7.0,
-      "final_score": 85,
-      "score_raw": 0.846,
-      "confidence_pct": 79.8,
-      "confidence_label": "high",
-      "probability_7pct_5d": 53.5,
-      "risk": "medium",
-      "signals": [
-        "vix_change_4w",
-        "mom_jt",
-        "vix_term_slope"
-      ],
-      "explanation": "leading signals: vix_change_4w, mom_jt, vix_term_slope"
-    },
-    {
-      "ticker": "RIVN",
-      "company_name": "RIVN",
-      "current_price": 16.52,
-      "target_price": 17.68,
-      "upside_pct": 7.0,
-      "final_score": 84,
-      "score_raw": 0.8444,
-      "confidence_pct": 79.7,
-      "confidence_label": "high",
-      "probability_7pct_5d": 53.4,
-      "risk": "medium",
-      "signals": [
-        "vix_change_4w",
-        "mom_jt",
-        "reversal_1w"
-      ],
-      "explanation": "leading signals: vix_change_4w, mom_jt, reversal_1w"
-    },
-    {
-      "ticker": "KYMR",
-      "company_name": "KYMR",
-      "current_price": 90.43,
-      "target_price": 96.76,
-      "upside_pct": 7.0,
-      "final_score": 84,
-      "score_raw": 0.8399,
-      "confidence_pct": 79.5,
-      "confidence_label": "high",
-      "probability_7pct_5d": 49.9,
-      "risk": "medium",
-      "signals": [
-        "vix_change_4w",
-        "reversal_1w",
-        "mom_jt"
-      ],
-      "explanation": "leading signals: vix_change_4w, reversal_1w, mom_jt"
+      "explanation": "leading signals: rate_10y, bb_width, mom_5d"
     }
   ]
 }
