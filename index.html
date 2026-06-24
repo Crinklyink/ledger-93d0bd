@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <meta name="googlebot" content="noindex, nofollow">
-<title>SP — The Stockpred Ledger</title>
+<title>SP — Weekly Picks</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Cinzel+Decorative:wght@700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -182,6 +182,19 @@
 
   .loading{text-align:center;padding:80px 0;font-family:var(--head);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-size:13px}
 
+  /* password gate */
+  #gate{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:var(--bg)}
+  .gatebox{text-align:center;max-width:300px;width:100%;padding:0 24px}
+  .gatebox .gt{font-family:var(--mast);font-weight:900;font-size:60px;color:var(--ink);letter-spacing:.05em;line-height:1}
+  .gatebox .gs{font-family:var(--head);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:12px 0 24px}
+  .gatebox input{width:100%;background:none;border:none;border-bottom:1px solid var(--line);color:var(--ink);
+    font-family:ui-monospace,Menlo,Consolas,monospace;font-size:24px;text-align:center;letter-spacing:8px;padding:10px 0;outline:none}
+  .gatebox input:focus{border-color:var(--blue)}
+  .gatebox button{margin-top:24px;width:100%;background:none;border:1px solid var(--line);color:var(--ink);
+    font-family:var(--head);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:12px;cursor:pointer;transition:.15s}
+  .gatebox button:hover{border-color:var(--blue);color:var(--blue)}
+  .gatebox .gerr{color:var(--red);font-size:12.5px;margin-top:16px;min-height:18px;font-style:italic}
+
   /* hero lead story */
   .hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:30px;align-items:center;
     border:1px solid var(--faint);border-left:3px solid var(--red);background:rgba(255,255,255,.014);padding:22px 26px;margin-top:18px}
@@ -276,12 +289,18 @@
 </style>
 </head>
 <body>
+<div id="gate"><div class="gatebox">
+  <div class="gt">SP</div>
+  <div class="gs">Enter password</div>
+  <input id="gpw" type="password" inputmode="numeric" autocomplete="off" placeholder="••••" />
+  <button id="gbtn">Unlock</button>
+  <div id="gerr" class="gerr"></div>
+</div></div>
 <div class="screen">
   <article class="paper">
     <!-- masthead -->
     <div class="topline">
-      <span id="volno">Vol. III · No. 24</span>
-      <span class="mid"><span style="font-size:9px">★</span>Night Edition<span style="font-size:9px">★</span></span>
+      <span id="volno">WEEKLY US EQUITIES</span>
       <span id="mast-model">Model —</span>
     </div>
     <div class="rule1"></div>
@@ -291,20 +310,18 @@
         <h1>SP</h1>
         <span class="line" style="background:linear-gradient(90deg,var(--blue),transparent)"></span>
       </div>
-      <div class="epi">“The market can remain irrational longer than you can remain solvent.” <span class="by">— J. M. Keynes</span></div>
     </header>
     <div class="rule2"></div>
     <div class="dateline">
-      <span id="dateline-date">New York · —</span><span class="star">✦</span>
-      <span>Long-Only Edition</span><span class="star">✦</span>
-      <span>Price: One Deflated Sharpe</span><span class="star">✦</span>
-      <span>Research Tool — Not Financial Advice</span>
+      <span id="dateline-date">—</span><span class="star">·</span>
+      <span>Long-Only</span><span class="star">·</span>
+      <span>Not Financial Advice</span>
     </div>
 
     <!-- tabs -->
     <nav class="tabs" id="tabs">
       <button data-tab="book" class="active">The Book</button>
-      <button data-tab="ledger">Full Ledger</button>
+      <button data-tab="ledger">Full Book</button>
       <button data-tab="model">The Model</button>
       <button data-tab="analytics">Analytics</button>
     </nav>
@@ -312,7 +329,7 @@
     <!-- status strip -->
     <div class="statusbar">
       <div class="chips">
-        <span id="src" class="live"><span class="dot"></span>Live · stockpred</span>
+        <span id="src" class="live"><span class="dot"></span>Live</span>
         <span>Model<b id="sb-model">—</b></span>
         <span>As of<b id="sb-asof">—</b></span>
         <span>Generated<b id="sb-gen">—</b></span>
@@ -328,15 +345,14 @@
     </div>
 
     <footer class="colophon">
-      <div class="a"><span class="sp">SP</span> &nbsp;·&nbsp; A weekly US-equity alpha engine &nbsp;·&nbsp; <span id="foot-model">Model —</span> &nbsp;·&nbsp; Ensemble 55/30/15 &nbsp;·&nbsp; Long-only · Max-power</div>
-      <div class="b">Research Tool — Not Financial Advice — Judge It By The Deflated Sharpe Before Sizing</div>
+      <div class="a"><span class="sp">SP</span> &nbsp;·&nbsp; <span id="foot-model">Model —</span> &nbsp;·&nbsp; long-only · weekly</div>
+      <div class="b">Not Financial Advice — judge by the deflated Sharpe &amp; IC before sizing</div>
     </footer>
   </article>
 </div>
 
 <script>
-window.__SCAN__ = {"generated_at": "2026-06-24T11:55:14.538135+00:00", "as_of": "2026-06-26", "source": "real-stockpred", "model_hash": "1cd07378", "universe_total": 1574, "stage1_survivors": 1574, "model_metrics": {"deflated_sharpe": 0.9760044523560304, "sharpe_p50": 2.79400680580898, "ic_mean": 0.011416558478354493, "overfit_warning": true}, "model_card": {"objective": "return", "n_features": 68, "n_rows": 606382, "n_tickers": 2227, "cv": "walkforward", "fold_sharpes": [1.6079268142804621, 0.41790124640550635, 1.6824839686878053, -3.838408644695988, 8.856396945237794, 5.442166227196449, 5.900964904633419, -0.5027693582301476, 8.528804388150062, 0.26226586585721273, 6.034712427233392, 3.9055296429301545], "fold_ics": [0.004354516915251972, 0.006982269677189361, 0.03375204534396057, -0.00816703143644314, 0.030829570598348094, 0.04558641133387768, -0.02816471042768305, 0.011104051436029855, -0.0009928109755453947, 0.0033179011066579514, -0.028140855284023655, 0.06653734345263367], "fold_hit_rates": [0.5354483390617776, 0.46437685847667415, 0.5900102939465022, 0.41046586892101633, 0.6429268893962984, 0.5408992093018765, 0.5625939325847285, 0.47623688243802975, 0.5959943801236602, 0.45869706679571054, 0.551701653106248, 0.5276046997513475], "ensemble_weights": {"LightGBM ranker": 0.55, "XGBoost big-move": 0.3, "Neural net": 0.15}, "best_params": {"num_leaves": 58, "learning_rate": 0.0999374981156625, "n_estimators": 1026, "feature_fraction": 0.7513051533351103, "bagging_fraction": 0.6495617415262988, "lambda_l1": 0.0019719905921834736, "lambda_l2": 0.03226132784437507, "min_child_samples": 228}}, "selected": [{"ticker": "ACN", "company_name": "Accenture", "current_price": 124.83, "target_price": 133.57, "upside_pct": 7.0, "final_score": 95, "score_raw": 0.9494, "confidence_pct": 89.1, "confidence_label": "high", "probability_7pct_5d": 58.3, "risk": "medium", "signals": ["rsi_14", "dist_52wk_high", "mom_5d"], "explanation": "leading signals: rsi_14, dist_52wk_high, mom_5d"}, {"ticker": "EPAM", "company_name": "EPAM Systems", "current_price": 76.04, "target_price": 81.36, "upside_pct": 7.0, "final_score": 95, "score_raw": 0.9454, "confidence_pct": 88.9, "confidence_label": "high", "probability_7pct_5d": 57.7, "risk": "medium", "signals": ["rsi_14", "dist_52wk_high", "mom_5d"], "explanation": "leading signals: rsi_14, dist_52wk_high, mom_5d"}, {"ticker": "ICHR", "company_name": "ICHR", "current_price": 99.61, "target_price": 106.58, "upside_pct": 7.0, "final_score": 92, "score_raw": 0.9243, "confidence_pct": 87.9, "confidence_label": "high", "probability_7pct_5d": 61.6, "risk": "high", "signals": ["rate_10y", "bb_width", "hy_spread_chg"], "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"}, {"ticker": "SNDK", "company_name": "SNDK", "current_price": 2273.73, "target_price": 2432.89, "upside_pct": 7.0, "final_score": 92, "score_raw": 0.9203, "confidence_pct": 87.7, "confidence_label": "high", "probability_7pct_5d": 60.7, "risk": "high", "signals": ["rate_10y", "bb_width", "mom_5d"], "explanation": "leading signals: rate_10y, bb_width, mom_5d"}, {"ticker": "VICR", "company_name": "VICR", "current_price": 365.53, "target_price": 391.12, "upside_pct": 7.0, "final_score": 92, "score_raw": 0.9191, "confidence_pct": 87.6, "confidence_label": "high", "probability_7pct_5d": 60.6, "risk": "high", "signals": ["rate_10y", "bb_width", "mom_5d"], "explanation": "leading signals: rate_10y, bb_width, mom_5d"}, {"ticker": "BE", "company_name": "BE", "current_price": 345.85, "target_price": 370.06, "upside_pct": 7.0, "final_score": 92, "score_raw": 0.918, "confidence_pct": 87.6, "confidence_label": "high", "probability_7pct_5d": 60.5, "risk": "high", "signals": ["rate_10y", "bb_width", "mom_5d"], "explanation": "leading signals: rate_10y, bb_width, mom_5d"}, {"ticker": "TTMI", "company_name": "TTMI", "current_price": 221.47, "target_price": 236.97, "upside_pct": 7.0, "final_score": 92, "score_raw": 0.9167, "confidence_pct": 87.5, "confidence_label": "high", "probability_7pct_5d": 60.1, "risk": "high", "signals": ["rate_10y", "bb_width", "hy_spread_chg"], "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"}, {"ticker": "PEGA", "company_name": "Pegasystems", "current_price": 29.38, "target_price": 31.44, "upside_pct": 7.0, "final_score": 92, "score_raw": 0.9164, "confidence_pct": 87.5, "confidence_label": "high", "probability_7pct_5d": 55.8, "risk": "medium", "signals": ["rsi_14", "dist_52wk_high", "mom_5d"], "explanation": "leading signals: rsi_14, dist_52wk_high, mom_5d"}, {"ticker": "FORM", "company_name": "FORM", "current_price": 156.66, "target_price": 167.63, "upside_pct": 7.0, "final_score": 92, "score_raw": 0.9156, "confidence_pct": 87.4, "confidence_label": "high", "probability_7pct_5d": 60.0, "risk": "medium", "signals": ["rate_10y", "bb_width", "mom_5d"], "explanation": "leading signals: rate_10y, bb_width, mom_5d"}, {"ticker": "ALAB", "company_name": "ALAB", "current_price": 439.66, "target_price": 470.44, "upside_pct": 7.0, "final_score": 92, "score_raw": 0.9151, "confidence_pct": 87.4, "confidence_label": "high", "probability_7pct_5d": 59.9, "risk": "medium", "signals": ["rate_10y", "bb_width", "mom_5d"], "explanation": "leading signals: rate_10y, bb_width, mom_5d"}, {"ticker": "WULF", "company_name": "WULF", "current_price": 28.31, "target_price": 30.29, "upside_pct": 7.0, "final_score": 91, "score_raw": 0.9147, "confidence_pct": 87.4, "confidence_label": "high", "probability_7pct_5d": 59.6, "risk": "medium", "signals": ["rate_10y", "bb_width", "hy_spread_chg"], "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"}, {"ticker": "MU", "company_name": "MU", "current_price": 1211.38, "target_price": 1296.18, "upside_pct": 7.0, "final_score": 91, "score_raw": 0.9142, "confidence_pct": 87.4, "confidence_label": "high", "probability_7pct_5d": 59.5, "risk": "medium", "signals": ["rate_10y", "bb_width", "mom_5d"], "explanation": "leading signals: rate_10y, bb_width, mom_5d"}, {"ticker": "IT", "company_name": "IT", "current_price": 125.73, "target_price": 134.53, "upside_pct": 7.0, "final_score": 91, "score_raw": 0.9142, "confidence_pct": 87.4, "confidence_label": "high", "probability_7pct_5d": 55.8, "risk": "medium", "signals": ["rsi_14", "dist_52wk_high", "mom_5d"], "explanation": "leading signals: rsi_14, dist_52wk_high, mom_5d"}, {"ticker": "INTC", "company_name": "INTC", "current_price": 140.94, "target_price": 150.81, "upside_pct": 7.0, "final_score": 91, "score_raw": 0.9138, "confidence_pct": 87.4, "confidence_label": "high", "probability_7pct_5d": 59.5, "risk": "medium", "signals": ["rate_10y", "bb_width", "hy_spread_chg"], "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"}, {"ticker": "UCTT", "company_name": "UCTT", "current_price": 123.14, "target_price": 131.76, "upside_pct": 7.0, "final_score": 91, "score_raw": 0.9133, "confidence_pct": 87.3, "confidence_label": "high", "probability_7pct_5d": 59.4, "risk": "medium", "signals": ["rate_10y", "bb_width", "hy_spread_chg"], "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"}, {"ticker": "TSEM", "company_name": "TSEM", "current_price": 316.85, "target_price": 339.03, "upside_pct": 7.0, "final_score": 91, "score_raw": 0.9131, "confidence_pct": 87.3, "confidence_label": "high", "probability_7pct_5d": 59.4, "risk": "medium", "signals": ["rate_10y", "bb_width", "mom_5d"], "explanation": "leading signals: rate_10y, bb_width, mom_5d"}, {"ticker": "STRL", "company_name": "STRL", "current_price": 932.75, "target_price": 998.04, "upside_pct": 7.0, "final_score": 91, "score_raw": 0.9129, "confidence_pct": 87.3, "confidence_label": "high", "probability_7pct_5d": 59.3, "risk": "medium", "signals": ["rate_10y", "bb_width", "hy_spread_chg"], "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"}, {"ticker": "PRAX", "company_name": "PRAX", "current_price": 303.39, "target_price": 324.63, "upside_pct": 7.0, "final_score": 91, "score_raw": 0.9126, "confidence_pct": 87.3, "confidence_label": "high", "probability_7pct_5d": 59.3, "risk": "medium", "signals": ["rate_10y", "bb_width", "mom_5d"], "explanation": "leading signals: rate_10y, bb_width, mom_5d"}, {"ticker": "SIMO", "company_name": "SIMO", "current_price": 336.9, "target_price": 360.48, "upside_pct": 7.0, "final_score": 91, "score_raw": 0.9124, "confidence_pct": 87.3, "confidence_label": "high", "probability_7pct_5d": 59.3, "risk": "medium", "signals": ["rate_10y", "bb_width", "hy_spread_chg"], "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"}, {"ticker": "AMKR", "company_name": "AMKR", "current_price": 93.55, "target_price": 100.1, "upside_pct": 7.0, "final_score": 91, "score_raw": 0.9115, "confidence_pct": 87.2, "confidence_label": "high", "probability_7pct_5d": 59.2, "risk": "medium", "signals": ["rate_10y", "bb_width", "hy_spread_chg"], "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"}, {"ticker": "GLW", "company_name": "GLW", "current_price": 209.83, "target_price": 224.52, "upside_pct": 7.0, "final_score": 91, "score_raw": 0.9113, "confidence_pct": 87.2, "confidence_label": "high", "probability_7pct_5d": 59.1, "risk": "medium", "signals": ["rate_10y", "bb_width", "hy_spread_chg"], "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"}, {"ticker": "AUGO", "company_name": "AUGO", "current_price": 65.26, "target_price": 69.83, "upside_pct": 7.0, "final_score": 91, "score_raw": 0.9102, "confidence_pct": 87.2, "confidence_label": "high", "probability_7pct_5d": 59.0, "risk": "medium", "signals": ["rate_10y", "bb_width", "hy_spread_chg"], "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"}, {"ticker": "ORKA", "company_name": "ORKA", "current_price": 85.38, "target_price": 91.36, "upside_pct": 7.0, "final_score": 91, "score_raw": 0.9086, "confidence_pct": 87.1, "confidence_label": "high", "probability_7pct_5d": 58.5, "risk": "medium", "signals": ["rate_10y", "bb_width", "hy_spread_chg"], "explanation": "leading signals: rate_10y, bb_width, hy_spread_chg"}, {"ticker": "Z", "company_name": "Z", "current_price": 30.31, "target_price": 32.43, "upside_pct": 7.0, "final_score": 91, "score_raw": 0.9084, "confidence_pct": 87.1, "confidence_label": "high", "probability_7pct_5d": 55.3, "risk": "medium", "signals": ["rsi_14", "dist_52wk_high", "mom_5d"], "explanation": "leading signals: rsi_14, dist_52wk_high, mom_5d"}, {"ticker": "TER", "company_name": "TER", "current_price": 457.0, "target_price": 488.99, "upside_pct": 7.0, "final_score": 91, "score_raw": 0.9077, "confidence_pct": 87.1, "confidence_label": "high", "probability_7pct_5d": 58.4, "risk": "medium", "signals": ["rate_10y", "bb_width", "mom_5d"], "explanation": "leading signals: rate_10y, bb_width, mom_5d"}]};
-window.__STATUS__ = {"data_source": "real-stockpred", "built_at": "2026-06-24T11:55:15.354796+00:00"};
+window.__ENC__ = {"salt":"RHiD99JkMzKbGj63uyZVJA==","iv":"vj+VV8cRKt/9gsYO","ct":"DK/zCFK1zLgF5httVlst/wM28nEIm9ruzEhhzw1ukgfwM2WLUh7Zxd/vj95Q9aK21BKkGMGQfQs3x7VfOC7seLsf0V0PO3QgdsjFuiWx0k5TyrfCzFxe6nIlClh/CYET3EsP/6adzQSUuwP1+v4U/kT/JUBXxraF/Tm1mp6TRxMpGsh8mHocjKJKF+h5ZHQE9ReU3NFdwY7YrL4HbOJR7M8qQNZX3T3d8pKP9ZC+o9ona9ilrDL3bVJ3bH/yQU+RO2iCHxWKkOkkcseSrCLjHMUOCjcJvPNmeWQYg68KiZ7TJvGzsm52pJ6OJDt3adQ6egqO6UOPBnER61zLM4LWWPgvpXs4VjYpbBRfq82AHjwFhpu6l36JuyohMgcGJpBPnFxqs+Hwl5tHXKr2SsnQzIgD4eXngRJhvWmqNIOogP0/CB1Xk2Ue/DN4+pN9SbHIEjXEc0Zf6QqaW96pHI4ff33vZZwtBKKq3NcXB+u6A6WdhU9NqKe3Jw+8rjyrvquj/cI95feiJHcpjaIzlNxLk2ViW8/66+0UalnnWuFeHo3F1bm3BwzOmLwoVXrxAGrb3wlouLBPHVo2EdeQm9pk0IeDnJIg6z1bmIv0pmblwJuaha7toGmfKcSnJVrpAkDZIDzQcY87yperzGAjol5dTE7hZtYapB/KhjegRY3iIfABIIb0eU/ZepZDKEPwmIh4ywDUVzbR14qR0I9wc70D66C8TuFMVHBRstuLXhfaAkenBWVNkLT5UyRAJFwmPGVIQRMDcm8DHi8CIUw2NGtacl7ypApTEV86KXVrKwK39+NX1wLD1nbcgquUJy+zjNjShNvPpPyRURY0wOT/QEgLeBqYFUkdStLQvf0OZbNODduPzZ/e4rNzD1hFMxOibvwrdQbbczaTFMGNIuPGbwN1GxA0P70QgsnkB0Zcwj2OhPruT9fGTKSeqKfJOru2WvNNxul/bZjXMWvwl2qvBDXM0ymKTAOqOqwOoF9Y+nkg9qTQFC7R4WAQ/vgZ0Ir7JCelspE6t5DwqfM3EqoEE/VuvVAQcnRq2pPA7u0gSNX1Z6QSk3bYJHaNUh+XkuH2h+wcMNSKsW+8LdRgkIYPwBT5WQE4TInC7lnniN/zJ7a9cAs/lAaAB2NLpQzAqjVTkuIyDowq2cQZ7fN6mAmkFxNGzZuqrwJBfFMUacWw3McJ2c/qnGVW8n4VB6GwYjpv77RqRBWu2jo6LhclOIaFfYivBZA1H+nOUY6BvplSzukthhUnlzt/ml1VFzv1ozkolZOxf6vKmKwPkb2qSZGt1RMow5rTu2QGDU1h36pzrRAXiVCJVgq0DuspO6nVDHexCrlkhzk1huHBc0L36MhgNm4j8AelRrtlHA096Iz4lOuSKMPub8ENh2DcdOn7gO5zBShNjZFw6zLMOuc6LKvmS2U94ESZo2LCtxRFe/IVylG5JB5zshZBnL5nYNhY5fm6t0K1sioXjs3PhSpxZ+qCy3a/gSi5uRaeayUDknX10h6vGwtchg0fKUTvBjSJyW8h6Rzdlw7nsmvKAE8VBpcPp1BNqvoC/a6w5q1aE0Rm4nfcmhKUkdCy0uuoiFx37Ihk/Yi5r7PSHBXVZoPwEyYKz0KCfVZdNQrt2GgQr0hunG83xr0gdFvyekL6/a+PSpvUYPhbl/xGVIEaGrvzH/fO8JWImpxAsf6XetkphBCue04WIMMyuF06Mo0b8xQTE7J0yGpX/DaRCku+aC5xT2PhTC+EvZ8xZjoF4ZmEbutL4yAK2lP4jC9KcZjhhRZwQnoAnWcw5KRT5HuuI+hf4en1DWRYku8EaH3iXkGmmy1JjesZ2vMHtaV4f/cHlvqp+2RXaBl4MJEYNc9SghdIkmf3SeMNMFzAOsxlYWDE+PUzGvuz9pvPcccTm7VACyvuo0aZGecRDMhN4JO2pmboV0vA+b4xM3httZTBv/V72qRW91OPgvAgRVH+LSBntgnVKiYVCbv07Ge4L+YciNaHxSDJZcD9tG3EoBL0jmZ3SbJvzYMH6UT/3cSGM560KH5QnRzKOWvMbn3CcQG0TKzFmtxzdcEzjbsOZzoPAhKXQ2v9kfBBTsZiV+r3gWjhfyqnKVN1Wu6ncCU8gZpwrv1GYcEE66Gxq+V9DIi0v7JSlwOWoe2M9pyKkQmzJIWHFW60aotIskDoXgaD2rmqcdXnYu+jpfnOOIiXU4cMFktvRgFVO7+I0JcTqlNoo4klLDLnLH0gPmgFZA5qpXmnq1aCMGjZDBUXNAuBK/Lhu4Z+FJVIkJaV2pT+MJaU0eoKtjOAzd18kht6BCqp57xiTmddWs75hxi9ug74A41yodLRPegdaAAhoAB+UqvyqlkAEX2/GpFWHcon4oxOoLYUxWRdyT6+5D/7jyRhZOE1Qqdvv6l2ttFIQcrGEwma0D5yvpTbK2HXU7sdZJXQcI38vTXtjSiBXO6JeE9IFgWecW8Ob6yeaj0wno/W/veOUPn6UQgxzOEWlefQU63yytQwCCUz3ZEY6Ggwc/HsTabYaImmbk8lN8V2HU/42kG+u13jck3p0siutGHceC4o/R6XnD3tf9VGihLeq8v/+f7wecJckTWfCcGrnuoJJn7nKwPuHmlA2yDfPdqIGOvCQ622zT5FSg1eeL1Ld3WPY9i3pTxO0dNY5Qddo1qwu237Xb283Gc7cb8ESlrz2VKVsv2FW1G2Y5cUJU3NOeI8Uz5ayDqkHdN0FNIha0ijcLccf6GfHkvlFgadrgEk2An+xkbOf4JOBmDmU4Lnxy94zTWvo4YK6EHAY8l6i76lr4Q2H9PwFcl0hWEedQwYgOdego6XH/ws6p6MKsXmC1BsNrowT60XZ6A9Geno3F+AQwvukMLQcBLHLvfPbLC+9+Xb+2AMWQDUC0MXHAJugjNCGd9uHCsLtIK9Olo9+2ziI/2Oanus/kLP2pSRdw41fNXiIGoT8B2kJ/Evk3fGottjRChT7/K7ZljJd4c4GAysVLffMAASVJn023NftdlPa4wTam6RYzHPdrKc6sRnBgRHKEAhYa0mw+5Gdakfg+EtmMAVFvErTLjg0Fcpo5Gcy5x5jmbTKXuiHjhe6FEvtyQYv1gXROYF5DzZKeCfkNCtPGGm7d7IejcDdRWudyhxyziYSFHEA8LGDY9co5mu8tXtaMDXvFinyx4cNXJrSMKK6XVQ4Nkljv/rkw3voQkqsgfVIiXaKRhCus3R9bhkmAU+XD1oPDoAK17pkRcaZxVlBBln6tldsOl9ptL8XTbbxKYnNCHN+gIDGmkYLB0be1vu5PlHdJTE+8pgXQwg7x6MY0AaL6EFtPFQOeJr11cvFVFGuopi5KgQmF6bkmAMPXk8DoA3P7zt1qJldXRCQD7HvXFPP4LgImUilR1nJjEfC3pS5IQ3RAxiVj/6eS/Gaxn/hKITbd1HxMsxxW29DoYsGBP0MTT8Nnu+M5KrU4MJ1X+SOtlCaZncu08jOA18HHLICJnjcaw3I6YH1zGBAv2DHPi3PwkQKJh6eOklSUh+tvIT1PoeJ7oa3nkVXI76Jxcdwlf9EfpBf28g0OGhHu8SW5+aNiO2X9DgqeTbDqDMjL5wksICD6uyJmPiZE/qYIDZ4bPxtao72C9eKgnJfFbznDS8HXZiorZdbzfjx4t9N+EF3O9lRStHtWD7ki9i16NLyv2zGRE3Cd84UmA35amgYXxaVVE/paydPT5G0vlGsjXSX1cTcNGAQ5kP5QGl1jAV2MG2FnkKNeYK2SGvV613CUHoWMjZar8FXrxi+x7eaGTutkS9+jXT3qk7Z1MXbmzA05iNEnXd3ai3yp5QbiqCCZC/+3k8Co+zB01f5h7IDGK8e7bJQb+MrUyxDFXNH3/JQVQZu81vkn/5+Qxj8MrKavFG5iyYBmd5lOYSp+bdxbbvGVnRKZiZU2tyN7yaZNKhx/w9WTw7rZYs7rV8kXImesCNviuCm0CtHxYw+WVRnz4MMHVsTQkemzeT1TUldRkPu8d8040CTtZgz1lGi9cfvm8VGyy9HaLj6lgPCvJEDGtiSY4UKyFgHXMPRH1fmMuiHg1CPafXej8TOP2Xm/xyJCkyMMlYFaNLr2jkm2k4eJPArqPk+HBZ/+fpmCBLgehna8gXqJzRDPHSuPiGDDJMBusrQ89+3FxLsFYOqCKMqiOiw9kz++NFcfl7EVWxSmW1D0ZpKJq3XF/pFwuJIW41Sn3PgKluHE92LYCRsMDo2TQQLObBrASj0CDzHac1AsAQd6HQ/fwTiDn3oxvj+M/HBcDgXxgCPJqfpkqlC5zCykBAXVCj8wNFTGBIHL2DWwigRHp/mlMnvH5qlzjaOPD3V6uOkCtqj0AIZyhAjSD34Yb633TxAzF5erIGe+zwKKc50iagRsCCgdObsEo9C/Ab4IJSM/pH7Xbk+v7NdY+w4e9ZwWun2e8fngmW2HE9hMCEXujH4QkpnNj2FgGMKrJ9PnezoFidqykto9LsRbNOGX9w2+yDrEygWW2yvRZwrrRiywNxKNiXi71ulKbYg5H6AESHxLo2pRkkpu2rg3F8Tl923czIbLHGrES9+0tYqcVbyfJF0Kx827/6R2CyP3f/iWPFXGScnKNWVwH3qq4Moze2LBZz6ppEO9l+bJPPvQ5nAvDdcFY5wOw8e3i09F+8RtRvweYQLqI4rPeHJomlrXp4NezzYWa6h3fLAq4569ManjOKmUkgq7pElJCGY/KRKl99IjKT8Qu/pGrFQz3FbgmhE0jb4SMTOTNBVyHaizxTT8KveOZNfztobL8xEddrYtmozzMq4GsqCK0E2x/gRV00IQ++XlRXsRuDpuqKiztIWs0+G1ZJv2DfM99uGQI6gruGJjyOWcTvsrYy9ELYtZmNWSt1QgoSVmJ6s5OEM+Ie5IKkQn8jfkF3QpMpWdSpQG1AMTNgpQr8dSU4N4PEqesJ4FYv6FlayY12VXetLGUbp4yUsWs8vK9/J34to2T0W3iny9CtutKOwtKWgL/XzR5XyUahq0iE0FlIHFj/sGr4Z+a9WrNZxDq+ZJr8tn0STOOp6n9WtAngXxQr/RwQcjlEblXngHe/1HtVt37DmxfviKpxJXtfgZaDp3kaN9JHYTgAj2HzbMfhVvGtL4PwolbGZ4LOuRVhCjZmsaHCCHwCLK9dHABqLs2tG/tnrbJXpqii76YloZdYt5UK/VsaO6ZwlqFhNhFTOQrgqQT1c5SKlHYlracuzjmz4C9R5mBAupR3uxmp5aQAwijrYf+GHutcY7jeQe7YlUT7dPh/20ZpggdS6ZV+gyad2PMCZFsJRB7i9nqIjM8HAz8WAl7/DDNBISI/1mgcDxxcpud6wRLkiFuJTl/Xy3myNqdNPIXbVsphHxX7VVZ9YIC+tv079z+BYNfRtoO+aU2THzDi92p8Vo6h1j9uNZ4ICxZNARXSneOo7VVzFJSCuUMfW1KjRjZCIID5z8u0Pmk3nGpSU5KyZrZnHNtoSSUAYaqXxqAFVwNMSM9tXDhlUQSvEudmFzZRDeNpKcK7nm+VYzSaJmzD8pQS8JXGoczL9a98zLew21Y9tL0zmft+m4pnIrueUlrWnm//DQulegbf3i1+57L1Oqo6KQVBlzGNsAj1V0UCqG3Lt5qqF0ujiaYHmpTKRFx7GN/2t6j7L4t3yrd1OoCODHHLas4t5qZzOAAHHQF9m0APy8A7Iit5Ls1CFwjSoxr9grkBVZ+ahvazmX4J/xS7ZMLMThRwrmriJ16j04h0jwz/uYO+2+mpbQmlU/iPauGnZALapy4RamnopJL1bK0zPuTH9CFoqqiCgZ38kdh79sw40QnRUH7bE79cjM6EYgRHQVdsxIp2MsKBH47uHbgwi7JTk6YUeg3s1uv3uSogRB0DNc+oToAXWIdGcTf4Emio/fJhPUe7asV9nH4LiF5bYTRtDFB8DrYY/gGQkdA0VuZgKOGGTurB3FXmenXXcWribRyv4JTTGmNLSH991dHB3s/md9uWOI6mU7nV2ZCpY2MUMDU550aosPIkd+wENv+yavECNV1wbEU7/maDmnbgdMQyZqpXRhIdcrBmPuf66QdB2CIQw5zTIfZOBe59w58oDsBpCPMw05tjCd5lL7IauPA3IvIRUakqZNM8TXn9lwAkrxpZchq76/qKqG0Rnp6D9AVOH4/vEWJlCa7wu/W5WDax5t9arQA3BHHF+UZ59kWCsp25Odzl8IZrPK/DqLFumLBzbe2TdHqhyEeeBRiCCYEVm6tAaGHV5UeHKMRqLZcl3m1FRfvvIU5hrDeGdtiNdBmaKkty7EH6wOcZG/qc1WDF+OL5BJQb7n2XxmRg3vhUIPHXBj+Xme5619KOQmjqqdkjA3SDQfT3vOMxnCb9JDPegrtMsc9mMYM2qcihTMGhsBIWJBgNdtAlckRn+fUVSbVs9fH++mjXEH70hZYeArI3OSF70gUogCcrQ1VTNDucJveMwoEDl0txrlt6SIN39xnIGY6bzg9kvn5HqnjnjlPlYOry9aBZ7MbHRAXaptQ84iLkvlvr/IfS2qpL8zpDpr0Efj/QqfFI6kj9gqp4tFnjqOow99z5/jMEmH5dCen2EKrRNTX46Agtw+q4uVcAER8SybIcFYj0y2Kax574/ikggYxwXZ37ue+pGHxOl8az+S9WNMG3pVu3YqahEDlDasKFicz6bnGhHoijdPc+exHJdzYGE12vEf+KeM+BWZ64D/RWccPH6MT0Trjg6OhjAK8ICWN8I9W49VBWEY25Q8IyTRcAbzKMeqbu7qbmuPyEY2n0G9qXTmpwxOgg2JIGOLRbtDbUdoYmTCzfJAHscbk2DFi0/aEvP34CQ/p8eiCqld+C6scUwSQRnu4zdIZ+GR7iVu/UnTsKZg/fC3aEDFJ0oRTmSjY3wLTvPy1/Cakd5iFgm1hI+xWHb4V3HwdwWZamqIldJYiU2nJ2nqSbAojmFEdhgLg7F83awL0ZoLGcVscUK5yn/qbJ78wCharIv+qdiEby6GyVEZ0M1c+Ldl5ibysSCJjWn/N6suypkel+580no1B2m5o6XiB9bSMt8MF0K7TlErSFRjgF5nquL2hyhn9JWiSqflGNJ5KS0E74hbFEOKsSFvK0cnZCAvHwrBdXyaPX8Opp7wA6EkOV3iQ5PZtYfBmZ5dAOodVbRtRIo51ULgt3z74AkTp68guYCGyfy9oS8ZRba61F9MwT6V64yt0YlpZ+hznXPJtTonRrgs2lxRwAMxg7ankY2iqKIm+bl396e7mRyc0jMCcrDDPmDV8v2QPL2cjMZ8ILNmj+BqS5NJHmHfCOp/xAmpqW0YJRJiRs0p0fbeEJFYrZzjPVnuLrcsbE7ywByW+y4HEH/X2pK12F1KP5NQAWCW72//feUnkD1AIxjHt3w2ouF9bVGjSxohN5sANaPFbEGVwuFxW+5NxfKY3ApMAEzwngyzvfbzD/3RyfAbGmLjw9sE67w8INsFTng6KE+D5cukkxFE4d+YAD75tndDE0O/5Df1+PfTiadPNr8i5JRqhZ9SQhxgcVUMEiSaI9PDK8mHJAuUnh4tyCHUtTs4QOOiDnsnTJ3iUFGZ8cZOtDPo/YIbNpWadg4Pzly3xAUGICQ62fsJSvUdKQ6GDi59wtE1bMXtpNm76CjfQOQDV6P0BE1mUwV+m0eizuAy4rbsM1vNQ1NWyeFKbxNOsfK4OUktiOKGcOkcpKbjyrzQhuX8K3+CZsEdK7/K48PNZVnLs0ljkSOpy/lg4cn3H0Knzv/6BWIIZoyvQVjIXz2Ac6beOVUFlpH5Ua9gYIHx6WnhOMqjgRNMQ9hUpv2aru+iebxo+g+mTD/E7i6HOBjZKUc15XBoQhG7Sx/LgmCMY7QhhOppckzXeOWGf7rpwajJN0ZY2gQmrh2s2vK/2nO8qmtySYeHXn0t2TcBu4PG8F7Rmg2cti0Xb8KpnsPXULjvBEvN/q9BRfHPfhYEvCU17AUv/MDBy5JH0o4T8+2Ol1+rjLoy8xCeIdRkjX9VRbKx5+YOGUfCKDddUJ1NhrHmPKO4CRWfC3VpSzB4Owmf8E6jPOpn1w6KDkHR81xbBtaVHWREH6yk21ZfEbEiVBFOu0UniocVq2SSlOFfmZ9sQPP/7qVi7zRlQ6/ndow0cYshOi5CWIPqusimYfQh8kfNK4gbUsTc9xC8xE7is0pnWNypBTX4XxFS9gmW9OFlnjHP6aUAyVkY1lpqzDW9IIoHgTwrbhgIykvhXOquvA9YWQ1rqtjhKqoGVFNWbSbw89F3r8AZ9JFZDuev5EQbSqvTimnDBzUMsvEyIf3AUR0iv+ofOV2BLgglL3sNUbfcOypiUmHDfzyYgL3EsB9FrDQbIGM6K0f3dRTg6H7rC+HH3qLxrMNyS45c1ATeKN+VgM6Pn1Nxh6+SafDeP9q3j1zqIpl+Y6rShEAowCO7qFO2YcAiJMZB+I1fzO50fVytxtoC1G5pS257+4Ycn1tajscUHW+GpLOlchmFLz+tCLg5PclEAb/ZIJOW67GtOssbIRRhQrnNYdtBMhkSq2dqgR3AipioBiXK8cx7UEYdrmH5C0JioTtOT4nUDmmoOVXrnyyxB7e1utqrtAy69A7pWeoOroetDbZJNOUhEKS2ShaX4thGa7wVan203N1Icdr6j/k5b1OGiteWqGBiH/RMamO1uNCgZRooCOJtk2UlUdMBvsPTtnVIBjBptlfnXaqiqw+ocGUWG195XgMGUORd6F+4gTbRp1bcyaGGqUPXvZLRyJdXA2KY1okZdo5cwdXcWT1tD+BYVFu/eO3Xa8daubq4bS4Syk2latNQazMX9GiaVTK6qmNFDbAiyLxkbfrzzvURrvYOptrwxURx3zyjh5OLAhLcRKrGEPOFBC7PfaqmlTvkFZgnhoUIIz8moec8eZ/AUBEIA2RhreWGC2y4JC5EFULqNwbJkJmsDeYeYQn9vhZJolNeMbNp3oPOdTGuYKFYm10OrAXTl+pw0ZAvMCTuXzXI8fYhj1gSqIP1w/hNNHrfyvQR/O88BCJbaHeWTjnc59P0AJ0pFF0XL/9XB6uxGz3sCoge9ouV0m3Io7w/LZqYT48x+eEL+UDVWZtJby7nQo+9HKt4n786pAT25m1ead7cR9qTqL1ts3JB49W6vEHnWypUKH4SZUk4G+iHZSRrVQb7PD4+mmtuo5Ae3sz6l9mK2zBNCpNJASW2V79mB7HRh9gVQx/hc01SXuvqSnFGwqxHoZ6dNCOnIkuJ7z4M935wC99RoTbOAXE5ZSqc+9kKDK++WF6CC1sJdWse5Pglb365GJ2mPP1NJDs/Uf8T82PSFhGLHpKNH1VYD6V2GzJcVQtQsydc/74HihGanXx1T9z4ux2YIVudi+OfowXtWjY9s/tdax7c2FNb3+3DWJI0j+wU6u8UtmGfcOn1vVIXkXAsUOP85ow5pNtPIUtbv85YdWbjYEqinbWDQ/iPdh3OjykaxEfUT9hQEH+m1GzFBsXGGhV7ftqwjJKvSIEWHcyGFbMGpLxbPYWCTjZdEbSQO0U/qVU21hmyEezFB3Xi6qPRf9Eq/jZMN2TQNdqWxSAt5zABJc49eaA7XXkrNqR2lw58ZndDuxBPMKrFt+D5rQ0QnsFQmFrA/hdW8TBXD6Mjy2cpLLznAuFzJ0tvRKxJasC8t92YLKDcC98/UaFsuzPaQC7xXhlVup/YykE40pTICJpO0Hx00wj+f4l6grwN/owIYzmdZPOIMPNMq8qKNu45aU4bqGLvs7hNOxrbWCfTEEpLgbTs/NqfEtdfsjX1LwyCTPVsan2FpUDhi4dTZqk5PMdcO+w/A9ucufaI80eM9A7gn+e+nxYf2xyrLdfrDk9U2WVXBoz4DQQsMqAKj30hZUin2x3YaKfuKbjqHlmAC6pPd7LKJAN9KdK/IF2oK4YAXjXRefmgC5L0xlBuIeMRBVIkzHxqCslbwhjnG/ERPG4PdgChzVXMbsPndQFE2/E0hHasJoYEn8A9r5/Qln7jfe0BUXzoIEQ9ECHTg+Fg2gFEyJ+yrHNM7RzIZXOW1As63AlKGcR5kdZNWnhJM27gdFOQUCDKEzD3RrKplE2MWBMdDtZ20za9ImzZHx/IVJshKd2+4K7wsGkGt2SK86Nklht1b89ei2vsNCF9qSeNipFfB3QVyd3i8wyoR7+X9U7bEMWJeC9cjdE15FV7D47YSITmnwrHDkB/Ti/EG5Nv3qPUuxhuATJWBJaJLZC34xJcY7ACV10R9Or3ajoiVFuY36/W/Si4muzcWY0lnWZQDG82R5KvetcNU8IsyHwWjgtTC325uM+mILHx8lu8jjUw/CPvRodOiIzz+pXXim3OViZaofMBsKoVUn71nU4MgJVCOkZSqcL1WxxYX0CoG89EaBtXTnsVq1AuMDtdOghXAaa7PmPDgVhXRpbwFFicJa0HGUxhNgJx9hFU/SEO1mSr6FbmWHpNelOkksZSIOmakCHoNzZGhtn+r0UQfoDsPYvVhfyL2nyISkdT1/dbPXDrkfLg/vXTFg1EL53T6Ti6Q7TUGWi0fps1a7toBVEMvyVJbQBbEAfaPP0BR+4K3xaB2vH+S/x09vYcgFgoj7/jAuFWIq5xnvT5o3N7OtlVfASGKmnkyiuy292WvJypVIqRWSVjkDXNyV4SWMhsSEBsS1aItD59lP3QGwD+xLMYAeAq82xYEw0tUAEEXu4FgVRAXeGyaM277nMbHUwYBMQBWHvVaC2zjLrxVXXWA/gv4Bukkvgl+mA/qCzQt2ZDCY2mp2jPSz1UuqSNn+O8acL17qMdMBFsYDt8Hm10Fzb9IIbDhLWkW/Q8wMbXl7TnJtyuXVhoxphpuS1g0BdlCEf6Uzf0HM3/1fuSto2uUjxFIBrwUdVipaQkqOGqEfPnmLmimlaurEIq7Hiy5E92kgj7WpHn22hHqpmN6jNONtWvT15P/tUTbFxH0pLx5VwEquG/pV0hV3vJ5r03DCIqy1NY+C2ogH8TpNG2q0HEn+JNaWcRPkQhpKkUxnwJObf9El/cKl1gDB4rlR50IZafXWb5/AiAf35Tsp7OF46+z2R4LMQo/shLAWbzLRYvN4ghK+WLFPXntuyU2KNgZ+qkY/drEJxDvb9/8Kc6fKAl7CCBrFXLshLlkmUlIrEk0de0KIa3UD/A6tfNO8Q3ol4wQUoaqKGAU3aJItLXwDjZQK7/BKqHL+7mQZVtcxaEz8jXNbvYbvU2BeJ8irgzwyd6ciqEpRXNnXiZCTlyQ5FvoAygCQJZMmIToYRc+5wy7xwxBgjfEdEXyUK7OFXl97u+VE7fa7lyDlhXDoj8xWMOqYIO+P1Bx4ZvAt4Ex73x0fDXLuz0P1Bc9rMrBmxCzm4/gBwlw/uVGMSkp1I7RxAKFq9qduEfWkgl33aXavAge1fiwplJoEEnBLpL65rJAoNNQDFGSP8UbAsOqKkHZzLfiTQYwOXQlrD0dpguL2b/eoDoXZI+ICcNkBgQAuRsHusuWLwlVG+Im9GyqBGn0WVy5fWcYr4gqUQOq8PuRDfXsenDpUCFMHFgTQTDBPnzSpVUj63s4AzgPyaCSYvwSez/8jRt6u2cweSV0OBqxRb9oKqBZUKxd9QAM7TE6tn5VcrEd46Z9UEbF5QypGGQhu/f5ac1AaCrATax5TDnHuosY77LOD3mYOlpBSS2WLAEDrh2OFFcl5j4fwYCcyB2DvyL1nEjXcMMSjhpydxpVEBiZxXPqndwbxOA2NE6gpCVZ28l6Vxme8jWUoi5b7S4PdwbfNPA+VTAStYxf/A/sY2nXiieIGCnIF4QfnW0Z3XI4uC1KVy9ZEYekD5LseInAPKUzbWuJt7Npibg79GoJGku1gNunhmsguT3bOadxQcF+dbI9Fb4+ASuiPpY5axXJnWLBSIf8FWerj6jxJNFTGPEqU2Bf8/S6bJeyyfSvGGOLdwROk6qj30nnEEk05PGiWI7Zac3Jhx+lYnrXrJCpe9dn+6fy0WmdWW0gQvipbOWwtSuCnOXtmHgXl24Utd5+GYfGfdrbqC1NYw1ofp3AjIu/peoceDl76nh5YvJavH0ahY+ma5VO942ArgKaC6b6k3NHkvyV8DTfYynaOfu1ruOq6xAxNMH8bZqB32qqTvdv74x19G6Brt3tj1OitmPR+cLQqsUZmS4xOeYQ9nihuvDw8IM1Ro3B6XTuRZdExWRH1tjjAHhrZCfnMM45ox1b92frHvHs36nytEtgg2iNmZSiOKJQDt3eGEgFPUf2dKF0DzB+r9NoWyk5nUzKSaahc5pP47PG9JQbv/h0tSsbF0aicEwNJGB+tF2CSrgeCv0kUrepYOVjgPh6OgtMrGsTP16trxyMDH3XV69vXqVzmdvGsoXlHy8hTqKZpQUlvOrwHZNGpvkWddB/y3WjWivUzIJY2xrBL6r9FjAXXdqW26SqU2YGV6PEVZsvW+TC6m+fsuH4z6aaou/wt7QFVRhUx1Zi+OoWgCMRvGpjNW3u8FmQhjeLw8SRWqaoCWwlUXuhnX4cCB4FocbEXvu7M28yqFPAeI0wxPUMHRrJP42euMDBgt1Ks0PphqNAHCWLvwXADeKB1eIK5VEvO02VuZ8uRH/5DO4AzTfH096kl67obW7FpibyIihWwzV+SfwnLcB3ZDtRiKoZm2/s1zpQvDp84+oGv5y58E1Exu4NIVD5EYmKuuejsyG/3t824D20KZ2jQ6cjQoBIypbNTKMU5y/TZMMxmWwUV3x8wH5Agyu5J3c1ww8OAoPRt8Uea/jHx0efvo77H2Zm70QZV82YFnJNtS7CA0Eeka4fmcV6M2P4eJYc0AwpUcU3nWNOg9J9UpGnhBlSP70uz4VbJQetEhvDURRiby+cUo4FMUHtiCprfY0zz01Jccj+ceTYjB6b5vt8mq+4IJOHzwGLaW14C8Wva1u4jckPt3fACO3hcfNRugmaxjrsPbSTb5FslZspw5tKRQee8Kouud+xm+HXNQIyVzGHtH68fs19QEq2Y5TrVXGljQUyYgynd1YyrZD57Hc6WOXvSrd434QNLuI98gfLt9D8KvbQIp+563YgGx2rJJ1gQVvgQyvZY5OKuuJRMvJsO39cQTE03zVaZdg42VPcWpZcmpVn4Z8EtnqnGu/L43RJNrSEIWZkeZTlhZyefeFIH6zlpKQiZZLT7CwvxG8x2sY5y8QSk4ldca1Gi84kj7DEw+L+rAfPGyu/M6CEECzV59n2R8IIrPBIn3tfwatTIIDkwN2BTE9xT9VTVXrJdeDA2nVkDlwYTkNkdrwvlcVbtoB91Eaxh8J9zUJO28jD4V0xR7pB5F2G4eN1qSltTboCf48XeiBMj91ElpH0rrIxipkNTrHGcJIxchZjYO2vLD8gKukIU6s9MW1otENK3X859izI1NcdVgQAzM3UelBMaP3agEbPAWQjblTBNHj4KsLWPLz10sH1+7munwx6EcbuClERWdI8KNBwRfIEXgtJ6Rlb1FE/nzaMCZmO/mOGWYnmZsxd4AkXdfg4KJWaVtOsTRX2eYINi3yVqayKe3F2Ew2bZt1r3X2V+jOFGqQEzSe1/tGUWFk9dAIj6UcySDUOkJ43oPawuiQKl4tHpRtj2qnghEg0Ws+ZNyVRAfEBdeipLOKKN6DA8B9auWfhN0AcgAhsMgosxrT8p0I41/DzVGVenf2EC0/T8C18AduqNjgfgVAH24mZDDGlvqMwMgk6Y53OW87Whe8835+NworzjirHAUMYUjQRn8a77Gpyxxnl5ZUrzN5o/D53V7i8+3QZRPC/5Pjltpb6V95/hBmCtPXZqc27gbolO52xeoRjMX6Me5IV0WaPPbVPBGJD5cIV0aY1vU5Y48kqNRm/tGM5lYk9cXjhLGfHJJ+cfCyfcOL01lxNzGFNu6XVF8fDG5UwXPKLKj2eTFTAE/b8ZPBIU07kJ7L8luIsq1rAFPJ+p5XKE6vkul+PRUE1yQ19wFsRjGFO3fmZyBDnAx5wDoESrrQlpUMq5jRP4OccPDxrdUKPWqDyMLZ1Yso2S6e5Yh7ipCr/WXpqO9W6zblYh3xVZHaodk3FYqvGq1jyyoW3V7PJEoaYaWUD1ptWb3ndkH7GUCmCRRQlqHW3YZmOGWAgoG+6Q3vD986idBvlJ7gWsJv7ZHoLHJVx8FtWOK4u7Nr7XsWfDffU+hTOIzcy+w5zSLat0s4Xm7k+VoUuFCIL0nCJX5xyJ60aaDQwRHtV+4oXbf1euPpc4DsGGMe6w11OZ3yT8TBxDfXyLxbcN/nGgbNuzejiAlA17n13QFhSSjMyX/Pz2566OSHWA28EIVSqr2LqVuFcdoCZyevGegFeCSkwZ22svEf/AZ3OBxrcec6usKf2WRebA8a6eL5995GOVbRgksZDTHd1oeNPqjxp6rB9lFaEgVUuGchhCndlcXD3rg1Y=","iter":150000};
 </script>
 <script>
 const $ = (s,r=document)=>r.querySelector(s);
@@ -357,8 +373,30 @@ function humanSig(s){
   return map[s]||s.replace(/_/g," ");
 }
 let DATA=null, STATUS=null;
-const STATIC = (typeof window.__SCAN__ !== "undefined");  // baked snapshot mode
+const STATIC = (typeof window.__SCAN__ !== "undefined");  // baked plaintext snapshot
+const ENC = (typeof window.__ENC__ !== "undefined");      // encrypted snapshot (password-gated)
 let LEDGER_SORT = {key:null, dir:-1};
+
+/* AES-256-GCM decrypt of the published snapshot — key = PBKDF2(password). */
+async function decryptScan(password){
+  const e=window.__ENC__;
+  const b=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+  const baseKey=await crypto.subtle.importKey("raw",new TextEncoder().encode(password),"PBKDF2",false,["deriveKey"]);
+  const key=await crypto.subtle.deriveKey({name:"PBKDF2",salt:b(e.salt),iterations:e.iter||150000,hash:"SHA-256"},
+    baseKey,{name:"AES-GCM",length:256},false,["decrypt"]);
+  const pt=await crypto.subtle.decrypt({name:"AES-GCM",iv:b(e.iv)},key,b(e.ct));
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+async function unlock(){
+  const pw=$("#gpw").value;
+  $("#gerr").textContent="…";
+  try{
+    DATA=await decryptScan(pw);
+    STATUS={data_source:DATA.source};
+    $("#gate").style.display="none";
+    paint();
+  }catch(err){ $("#gerr").textContent="Wrong password — try again."; $("#gpw").value=""; $("#gpw").focus(); }
+}
 
 /* deterministic price-path sparkline: history (solid) projecting to target (dashed) */
 function sparkline(cur, tgt, seed){
@@ -380,6 +418,7 @@ function sparkline(cur, tgt, seed){
 }
 
 async function load(){
+  if(ENC){ if(DATA) paint(); return; }   // encrypted snapshot: data set on unlock
   if(STATIC){ DATA=window.__SCAN__; STATUS=window.__STATUS__||null; paint(); return; }
   try{
     const [sc,st]=await Promise.all([
@@ -410,8 +449,8 @@ function paint(){
   $("#sb-warn").style.display=m.overfit_warning?"inline":"none";
   const gd=d.generated_at?new Date(d.generated_at):new Date();
   const dstr=gd.toLocaleDateString("en-US",{weekday:"long",year:"numeric",month:"long",day:"numeric"});
-  $("#dateline-date").textContent="New York · "+dstr;
-  $("#src").innerHTML=(d.source==="real-stockpred")?'<span class="dot"></span>Live · stockpred':'Mock data';
+  $("#dateline-date").textContent=dstr;
+  $("#src").innerHTML=(d.source==="real-stockpred")?'<span class="dot"></span>Live':'Mock data';
 
   const tab=document.querySelector("nav.tabs button.active").dataset.tab;
   const C=$("#content");
@@ -487,7 +526,7 @@ function renderBook(d,m,card,sel){
     <div class="kicker"><span>Weekly Alpha Report</span><span class="l"></span><span class="r">Long-Only · Top ${n}</span></div>
     <h2 class="lead">Engine Stakes ${NUMWORD[n]||n} Names As Deflated Sharpe ${m.overfit_warning?'Pushes To':'Holds At'} ${dsr}</h2>
     <p class="sub">Walk-forward validation${m.overfit_warning?` clears the bar but trips the overfit flag — the headline Sharpe runs hot, so size by the information coefficient (IC ${ic}), not the backtest.`:' clears the multiple-testing bar; the weekly book tilts bold, toward raw upside. Judge it by the deflated Sharpe before sizing.'}</p>
-    <div class="byline">By the stockpred Engine · As of ${esc(d.as_of||'—')} · Generated ${esc((d.generated_at||'').slice(0,16).replace('T',' '))} UTC</div>
+    <div class="byline">As of ${esc(d.as_of||'—')} · Generated ${esc((d.generated_at||'').slice(0,16).replace('T',' '))} UTC</div>
     ${heroHTML}
     <div class="statline">${statHTML}</div>
     <div class="grid">
@@ -561,7 +600,7 @@ function renderLedger(d,sel){
   return `
   <div class="tab active">
     <div class="kicker"><span>The Complete Book</span><span class="l"></span><span class="r">All ${sel.length} Names</span></div>
-    <h2 class="lead">The Full Ledger</h2>
+    <h2 class="lead">All Picks</h2>
     <p class="sub">Every name the engine surfaced this week, with entry, +7% target, modeled upside, and the probability of clearing the +7% barrier before a −3.5% stop within five sessions.</p>
     <div class="byline">Long-only · As of ${esc(d.as_of||'—')} · ${sel.length} ranked names</div>
     <div class="tscroll"><table class="book" style="margin-top:18px">
@@ -697,14 +736,20 @@ document.addEventListener("keydown",e=>{
   else if(e.key==="ArrowRight"&&cur<tabs.length-1)tabs[cur+1].click();
   else if(e.key==="ArrowLeft"&&cur>0)tabs[cur-1].click();
 });
-if(STATIC){
+if(ENC){
   const rb=$("#refresh"); if(rb) rb.style.display="none";
-  const sb=$("#src"); // mark as a published snapshot
+  $("#gbtn").addEventListener("click",unlock);
+  $("#gpw").addEventListener("keydown",e=>{ if(e.key==="Enter") unlock(); });
+  $("#gate").style.display="flex";
+  setTimeout(()=>$("#gpw").focus(),60);
+}else if(STATIC){
+  const rb=$("#refresh"); if(rb) rb.style.display="none";
+  load();
 }else{
   $("#refresh").addEventListener("click",rescan);
   setInterval(load,5*60*1000);
+  load();
 }
-load();
 </script>
 </body>
 </html>
